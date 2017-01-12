@@ -1,10 +1,10 @@
-var express = require('express');
-var path = require('path');
-var chalk = require('chalk');
+import express from 'express';
+import path from 'path';
+import chalk from 'chalk';
 
-var app = express();
+const app = express();
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../src/index.html'));
