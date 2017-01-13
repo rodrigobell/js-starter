@@ -23,4 +23,4 @@ app.listen(port, function(err) {
     } else {
         console.log(chalk.green('Running on PORT: ' + port));
     }
-});
+})
