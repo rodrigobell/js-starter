@@ -1,23 +1,22 @@
 import path from 'path';
 
 export default {
-    debug: true,
     devtool: 'inline-source-map',
-    noInfo: false,
     entry: [
-        path.resolve(__dirname, 'src/index')
+        path.resolve(__dirname, 'src/app')
     ],
     target: 'web',
     output: {
-        path: path.resolve(__dirname, 'src'),
-        publicPath: '/',
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'public'),
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     plugins: [],
     module: {
         loaders: [
             {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-            {test: /\.css$/, loaders: ['style', 'css']}
+            {test: /\.css$/, exclude: /node_modules/, loaders: ['style', 'css', 'autoprefixer']},
+            {test: /\.(png|jpg|jpeg|ttf|eot)$/, exclude: /node_modules/, loaders: ['url?limit=5000']}
         ]
     }
 }
