@@ -2,16 +2,18 @@ import express from 'express';
 import path from 'path';
 import webpack from 'webpack';
 import config from '../webpack.config';
-import webpackMiddleware from 'webpack-dev-middleware';
 import chalk from 'chalk';
 
+const port = 3000;
 const app = express();
-const port = process.env.PORT || 3000;
+const compiler = webpack(config);
 
-app.use(webpackMiddleware(webpack(config), {
-    publicPath: config.output.publicPath,
-    noInfo: true
+app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
 }));
+
+app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../src/index.html'));

@@ -38,3 +38,6 @@ jspm_packages
 
 # WebStorm files
 .idea
+
+# Mac files
+.DS_Store
