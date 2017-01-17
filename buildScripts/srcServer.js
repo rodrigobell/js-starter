@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import webpack from 'webpack';
-import config from '../webpack.config';
+import config from '../webpack.config.dev';
 import chalk from 'chalk';
 
 const port = 3000;
@@ -23,6 +23,6 @@ app.listen(port, function(err) {
     if (err) {
         console.log(err);
     } else {
-        console.log(chalk.green('Running on PORT: ' + port));
+        console.log(chalk.green('Dev app running on PORT: ' + port));
     }
 })
